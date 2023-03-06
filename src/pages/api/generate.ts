@@ -14,6 +14,8 @@ export const post: APIRoute = async (context) => {
   if (!messages) {
     return new Response('No input text')
   }
+  console.log("request role", messages[messages.length - 1]?.role)
+  console.log("request message：", messages[messages.length - 1]?.content)
   const initOptions = generatePayload(apiKey, messages)
   // #vercel-disable-blocks
   if (https_proxy) {
