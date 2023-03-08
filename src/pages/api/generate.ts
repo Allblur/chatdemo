@@ -17,7 +17,7 @@ export const post: APIRoute = async (context) => {
   console.log("request role", messages[messages.length - 1]?.role)
   messages[messages.length - 2] && console.log("request message：", messages[messages.length - 2].content)
   console.log("request message：", messages[messages.length - 1]?.content)
-  const initOptions = generatePayload(apiKey, messages)
+  const initOptions = generatePayload(body.key || apiKey, messages)
   // #vercel-disable-blocks
   if (https_proxy) {
     initOptions['dispatcher'] = new ProxyAgent(https_proxy)

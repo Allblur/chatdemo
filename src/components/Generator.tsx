@@ -48,6 +48,7 @@ export default () => {
         method: 'POST',
         body: JSON.stringify({
           messages: requestMessageList,
+          key: localStorage.getItem('openaikey')
         }),
         signal: controller.signal,
       })
