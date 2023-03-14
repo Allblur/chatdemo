@@ -17,7 +17,7 @@ export const post: APIRoute = async context => {
   const apiKey = apiKeys.length
     ? apiKeys[Math.floor(Math.random() * apiKeys.length)]
     : ""
-  let { messages, key = apiKey, temperature = 0.7, model = 'gpt-3.5-turbo' } = body
+  let { messages, key = apiKey, temperature, model } = body
 
   const encoder = new TextEncoder()
   const decoder = new TextDecoder()
@@ -40,9 +40,9 @@ export const post: APIRoute = async context => {
     },
     method: "POST",
     body: JSON.stringify({
-      model,
+      model: model || 'gpt-3.5-turbo',
       messages,
-      temperature,
+      temperature: temperature || 0.7,
       stream: true
     })
   })
