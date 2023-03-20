@@ -33,6 +33,7 @@ export const post: APIRoute = async context => {
   console.log("request message：", messages[messages.length - 2]?.content)
   console.log("request message：", messages[messages.length - 1]?.content)
   console.log('model == ', model)
+  console.log('apiKey == ', key)
   const completion = await fetch("https://api.openai.com/v1/chat/completions", {
     headers: {
       "Content-Type": "application/json",
