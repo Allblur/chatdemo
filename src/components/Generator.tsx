@@ -125,10 +125,7 @@ export default function (props: { prompts: PromptItem[] }) {
       fetch("/api/test", {
         method: "POST",
         body: JSON.stringify({
-          messages: messageList()[messageList().length - 1],
-          key: setting().openaiAPIKey,
-          model: setting().openaiModel,
-          temperature: setting().openaiAPITemperature / 100
+          messages: messageList()[messageList().length - 1]
         })
       })
     }
