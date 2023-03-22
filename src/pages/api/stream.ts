@@ -30,7 +30,6 @@ export const post: APIRoute = async context => {
     return new Response("没有输入任何文字")
   }
   console.log("request role", messages[messages.length - 1]?.role)
-  console.log("request message：", messages[messages.length - 2]?.content)
   console.log("request message：", messages[messages.length - 1]?.content)
   console.log('model == ', model)
   console.log('apiKey == ', key)
