@@ -19,7 +19,7 @@ export const post: APIRoute = async context => {
     : ""
   let { messages, key = apiKey, temperature, model } = body
   let msg = ''
-  console.log("context==>>", context)
+  console.log("context.url==>>", context.url)
   console.log("clientAddress==>>", context.clientAddress)
   const encoder = new TextEncoder()
   const decoder = new TextDecoder()
