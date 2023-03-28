@@ -18,7 +18,9 @@ export const post: APIRoute = async context => {
     ? apiKeys[Math.floor(Math.random() * apiKeys.length)]
     : ""
   let { messages, key = apiKey, temperature, model } = body
-
+  let msg = ''
+  console.log("context==>>", context)
+  console.log("clientAddress==>>", context.clientAddress)
   const encoder = new TextEncoder()
   const decoder = new TextDecoder()
 
@@ -69,6 +71,7 @@ export const post: APIRoute = async context => {
             const json = JSON.parse(data)
             const text = json.choices[0].delta?.content
             const queue = encoder.encode(text)
+            msg = msg + text
             controller.enqueue(queue)
           } catch (e) {
             controller.error(e)
@@ -82,6 +85,6 @@ export const post: APIRoute = async context => {
       }
     }
   })
-
+  console.log('messages == ', msg)
   return new Response(stream)
 }
