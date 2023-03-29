@@ -122,7 +122,7 @@ export default function (props: { prompts: PromptItem[] }) {
       setController()
       !isMobile() && inputRef.focus()
       scrollToBottom.flush()
-      fetch("/api/test", {
+      fetch("/i/api/test", {
         method: "POST",
         body: JSON.stringify({
           messages: messageList()[messageList().length - 1]
@@ -177,7 +177,7 @@ export default function (props: { prompts: PromptItem[] }) {
       role: "user",
       content: systemRule ? systemRule + "\n" + inputValue : inputValue
     }
-    const response = await fetch("/api/stream", {
+    const response = await fetch("/i/api/stream", {
       method: "POST",
       body: JSON.stringify({
         messages: setting().continuousDialogue
