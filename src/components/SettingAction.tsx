@@ -172,10 +172,11 @@ function SettingItem(props: {
 function ActionItem(props: { onClick: any; icon: string; label?: string }) {
   return (
     <div
+      title={props.label}
       class="flex items-center cursor-pointer mx-1 p-2 hover:bg-slate hover:bg-op-10 rounded text-1.2em"
       onClick={props.onClick}
     >
-      <button class={props.icon} title={props.label} />
+      <button class={props.icon} />
     </div>
   )
 }
